@@ -1,0 +1,5 @@
+server:
+  port: 8181
+
+photos:
+  path: /Users/philip.armstrong/workspace/personal/springy-kotlin/src/main/resources/static
