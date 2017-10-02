@@ -9,7 +9,7 @@ data class PhotoInfo(
         var filename: String? = null,
         var albums: List<String> = listOf(),
         var categories: List<String> = listOf(),
-        var people: List<String> = listOf(),
+        var person: List<String> = listOf(),
         var location: String? = null,
         var uploadDate: Date? = null,
         var takenOnDate: Date? = null,
@@ -33,7 +33,7 @@ data class PhotoInfo(
         solrInputDocument.addField(SolrField.YEAR.key, year)
         solrInputDocument.addField(SolrField.MONTH.key, month)
         solrInputDocument.addField(SolrField.DAY.key, day)
-        solrInputDocument.addField(SolrField.PERSON.key, people)
+        solrInputDocument.addField(SolrField.PERSON.key, person)
         solrInputDocument.addField("dateTaken", takenOnDate)
         solrInputDocument.addField("dateUploaded", uploadDate)
         solrInputDocument.addField("editted", new)

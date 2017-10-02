@@ -1,0 +1,21 @@
+<div>
+  <span>{{ facet.name }}</span>
+  <ul>
+    <li *ngFor="let value of facet.values">
+      <input id="{{value.name}}" type="checkbox" [(ngModel)]="value.selected" (ngModelChange)="updateFacet(value)"/>
+      <label for="{{value.name}}">{{ value.name }}</label>
+      <ul *ngIf="value.subFacet && value.selected">
+        <li *ngFor="let subFacet1 of value.subFacet.values">
+          <input id="{{subFacet1.name}}" type="checkbox" [(ngModel)]="subFacet1.selected" (ngModelChange)="updateFacet(subFacet1)"/>
+          <label for="{{subFacet1.name}}">{{ subFacet1.name }}</label>
+          <ul *ngIf="subFacet1.subFacet && subFacet1.selected">
+            <li *ngFor="let subFacet2 of subFacet1.subFacet.values">
+              <input id="{{subFacet2.name}}" type="checkbox" [(ngModel)]="subFacet2.selected" (ngModelChange)="updateFacet(subFacet2)"/>
+              <label for="{{subFacet2.name}}">{{ subFacet2.name }}</label>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

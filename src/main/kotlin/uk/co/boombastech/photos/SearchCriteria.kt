@@ -32,6 +32,7 @@ data class SearchCriteria(
 
         solrQuery.start = (page - 1) * size
         solrQuery.rows = size
+        solrQuery.facetMinCount = 1
 
         return solrQuery
     }

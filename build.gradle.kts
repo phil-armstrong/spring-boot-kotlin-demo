@@ -1,5 +1,4 @@
-import com.moowork.gradle.node.npm.NpmInstallTask
-import com.moowork.gradle.node.npm.NpmTask
+import org.springframework.boot.gradle.run.BootRunTask
 
 buildscript {
 	repositories {
@@ -50,9 +49,6 @@ dependencies {
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 
-//task buildClientWatch(type: NpmTask, dependsOn: 'npmInstall')
-//{
-//    group = 'application'
-//    description = "Build and watches the client side assets for rebuilding"
-//    args = ['run','buildWatch']
-//}
+(tasks.getByName("bootRun") as BootRunTask).apply {
+    addResources = true
+}

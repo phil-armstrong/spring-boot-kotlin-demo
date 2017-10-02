@@ -15,7 +15,7 @@ class PhotoMapper {
                     filename = result["name"] as String,
                     albums = result.getListOfStrings("album"),
                     categories = result.getListOfStrings("category"),
-                    people = result.getListOfStrings("person"),
+                    person = result.getListOfStrings("person"),
                     location = result["location"] as String?,
                     uploadDate = result["uploadDate"] as Date?,
                     takenOnDate = result["takenOnDate"] as Date?,

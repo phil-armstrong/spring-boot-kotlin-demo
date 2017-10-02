@@ -12,6 +12,7 @@ data class SolrFilterQuery(
             stringBuilder.append("{!tag=$tag}")
         }
         stringBuilder.append(name)
+        stringBuilder.append(":")
         stringBuilder.append(values.joinToString(separator = " ", prefix = "(", postfix = ")"))
 
         return stringBuilder.toString()

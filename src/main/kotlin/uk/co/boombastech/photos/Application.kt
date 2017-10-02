@@ -42,48 +42,50 @@ class Application {
             photo4Taken.set(2017,9,24)
             solrClient.ping()
             LOG.info("Successfully pinged solr server!")
+
+            solrClient.deleteByQuery("*:*")
             photoRepository.save(listOf(
                     PhotoInfo(filename = "image1.jpg",
                             albums = listOf("cheese", "petrol"),
                             categories = listOf("category1"),
-                            people = listOf("Phil", "Rhiann"),
+                            person = listOf("Phil", "Rhiann"),
                             year = 2017,
                             month = 9,
                             day = 10,
-                            location = "Liverpool",
+                            location = "4",
                             uploadDate = photo1Upload.time,
                             takenOnDate = photo1Taken.time
                     ),
                     PhotoInfo(filename = "image2.jpg",
                             albums = listOf("petrol"),
                             categories = listOf("category2"),
-                            people = listOf("Phil", "Rhiann", "Zach"),
+                            person = listOf("Phil", "Rhiann", "Zach"),
                             year = 2017,
-                            month = 9,
+                            month = 10,
                             day = 9,
-                            location = "Liverpool",
+                            location = "3",
                             uploadDate = photo2Upload.time,
                             takenOnDate = photo2Taken.time
                     ),
                     PhotoInfo(filename = "image3.jpg",
                             albums = listOf("cheese"),
                             categories = listOf("category1", "category2"),
-                            people = listOf("Phil", "Ethan"),
+                            person = listOf("Phil", "Ethan"),
                             year = 2017,
-                            month = 9,
+                            month = 10,
                             day = 11,
-                            location = "Liverpool",
+                            location = "2",
                             uploadDate = photo3Upload.time,
                             takenOnDate = photo3Taken.time
                     ),
                     PhotoInfo(filename = "image4.jpg",
                             albums = listOf("cheese"),
                             categories = listOf("category1", "category3"),
-                            people = listOf("Rhiann", "Zach"),
-                            year = 2017,
-                            month = 8,
+                            person = listOf("Rhiann", "Zach"),
+                            year = 2016,
+                            month = 9,
                             day = 12,
-                            location = "Liverpool",
+                            location = "1",
                             uploadDate = photo4Upload.time,
                             takenOnDate = photo4Taken.time
                     )

@@ -28,9 +28,9 @@ enum class SolrField(val key: String,
             photoInfoStringProperty = PhotoInfo::location
     ),
     PERSON(
-            key = "people",
+            key = "person",
             searchCriteriaProperty = SearchCriteria::person,
-            photoInfoListProperty = PhotoInfo::people
+            photoInfoListProperty = PhotoInfo::person
     ),
     YEAR(
             key = "year",

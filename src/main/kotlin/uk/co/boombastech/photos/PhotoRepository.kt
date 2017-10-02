@@ -27,7 +27,7 @@ class PhotoRepository(val solrClient: SolrClient, val solrResponseMapper: SolrRe
         LOG.info(solrQuery.toString())
 
         val response = solrClient.query(solrQuery)
-        return solrResponseMapper.createSearchResult(response)
+        return solrResponseMapper.createSearchResult(response, searchCriteria)
     }
 
     fun save(photos: List<PhotoInfo>) {

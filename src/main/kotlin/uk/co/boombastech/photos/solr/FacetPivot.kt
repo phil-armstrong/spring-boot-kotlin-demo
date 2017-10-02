@@ -1,5 +1,6 @@
 package uk.co.boombastech.photos.solr
 
+import uk.co.boombastech.photos.Facet
 import uk.co.boombastech.photos.solr.SolrField.*
 
 enum class FacetPivot(val key: String,
@@ -15,5 +16,9 @@ enum class FacetPivot(val key: String,
 
     fun createFacetPivot(): String {
         return "{!ex=$tag}$pivotFields"
+    }
+
+    fun asdf(): Facet {
+        return Facet(name = "")
     }
 }
