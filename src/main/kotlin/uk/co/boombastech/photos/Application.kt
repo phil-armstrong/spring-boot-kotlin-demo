@@ -3,22 +3,28 @@ package uk.co.boombastech.photos
 import org.apache.solr.client.solrj.SolrClient
 import org.apache.solr.client.solrj.impl.HttpSolrClient
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder
-import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Bean
-import org.springframework.context.annotation.Primary
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer
 import org.springframework.scheduling.annotation.EnableScheduling
-import javax.sql.DataSource
-
 
 @SpringBootApplication
 @EnableScheduling
 class Application {
 
     private val LOG = LoggerFactory.getLogger(Application::class.java)
+
+    @Bean
+    fun solrClient(@Value("%{solr.path}") solrUrl: String): SolrClient {
+        return HttpSolrClient.Builder(solrUrl).build()
+    }
+
+    @Bean
+    fun propertyConfigurer() = PropertySourcesPlaceholderConfigurer().apply {
+        setPlaceholderPrefix("%{")
+    }
 
 //    @Bean
 //    fun init(solrClient: SolrClient, photoRepository: PhotoRepository) = CommandLineRunner {
@@ -96,17 +102,6 @@ class Application {
 //            throw Exception("Could not ping solr server", solrException)
 //        }
 //    }
-
-    @Bean
-    fun solrClient(): SolrClient {
-        return HttpSolrClient.Builder("http://localhost:8983/solr/photos").build()
-    }
-
-    @Bean
-    fun propertyConfigurer() = PropertySourcesPlaceholderConfigurer().apply {
-        setPlaceholderPrefix("%{")
-    }
-
 }
 
 fun main(args: Array<String>) {
