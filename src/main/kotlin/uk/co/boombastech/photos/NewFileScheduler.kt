@@ -2,22 +2,22 @@ package uk.co.boombastech.photos
 
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.scheduling.annotation.Scheduled
-import org.springframework.stereotype.Component
 import java.io.File
-import java.nio.file.*
-import java.nio.file.StandardWatchEventKinds.*
+import java.nio.file.FileSystems
+import java.nio.file.Path
+import java.nio.file.StandardWatchEventKinds.ENTRY_CREATE
+import java.nio.file.WatchService
 import java.util.*
 
 
-@Component
+//@Component
 class NewFileScheduler(private val photoRepository: PhotoRepository, @Value("%{photos.path}") private val photoPath: String) {
 
     private final val LOG = LoggerFactory.getLogger(NewFileScheduler::class.java)
 
     private final val watcher: WatchService = FileSystems.getDefault().newWatchService()
 
-    @Scheduled(cron = "*/5 * * * * *")
+//    @Scheduled(cron = "*/5 * * * * *")
     fun checkForNewFiles() {
         try {
             LOG.info("Looking for new files")
